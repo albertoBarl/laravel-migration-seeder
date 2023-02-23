@@ -9,7 +9,7 @@
     @vite('resources/js/app.js')
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark p-5">
     <div class="d-flex flex-wrap gap-5">
 
         @foreach ($train as $card)
