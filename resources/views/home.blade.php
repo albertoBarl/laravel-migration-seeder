@@ -10,22 +10,51 @@
 </head>
 
 <body class="bg-dark">
-    <div>
+    <div class="d-flex flex-wrap gap-5">
 
         @foreach ($train as $card)
             <div class="card">
-                <p>{{ $card['Azienda'] }}</p>
-                <p>{{ $card['Stazione_di_partenza'] }}</p>
-                <p>{{ $card['Stazione_di_arrivo'] }}</p>
-                <p>{{ $card['Orario_di_partenza'] }}</p>
-                <p>{{ $card['Orario_di_arrivo'] }}</p>
-                <p>{{ $card['Codice_Treno'] }}</p>
-                <p>{{ $card['Numero_Carrozze'] }}</p>
-                <span>{{ $card['In_orario'] }}</span>
-                <span>{{ $card['Cancellato'] }}</span>
+                <p>Azienda: {{ $card['Azienda'] }}</p>
+                <p>Stazione di partenza: {{ $card['Stazione_di_partenza'] }}</p>
+                <p>Stazione di arrivo: {{ $card['Stazione_di_arrivo'] }}</p>
+                <p>Partenza: {{ $card['Orario_di_partenza'] }}</p>
+                <p>Arrivo: {{ $card['Orario_di_arrivo'] }}</p>
+                <p>ID. Treno: {{ $card['Codice_Treno'] }}</p>
+                <p>N. Carrozze: {{ $card['Numero_Carrozze'] }}</p>
+                <span>Treno in orario: @switch($card['In_orario'])
+                        @case(0)
+                            "No"
+                        @break
+
+                        @case(1)
+                            "Si"
+                        @break
+
+                        @default
+                    @endswitch
+                </span>
+                <span>Cancellato:
+                    @switch($card['Cancellato'])
+                        @case(0)
+                            "No"
+                        @break
+
+                        @case(1)
+                            "Si"
+                        @break
+
+                        @default
+                    @endswitch
+                </span>
             </div>
         @endforeach
     </div>
 </body>
 
 </html>
+<style>
+    .card {
+        width: 250px;
+
+    }
+</style>
